@@ -1,0 +1,52 @@
+# OS & Editor Specific Files
+.DS_Store
+Thumbs.db
+
+# Application Cache
+application/cache/*
+!application/cache/index.html
+
+# Logs
+application/logs/*
+!application/logs/index.html
+
+# htaccess file protection
+!application/*/.htaccess
+
+# Composer
+/vendor/
+composer.lock
+
+# SQLite test DB
+tests/mocks/database/ci_test.sqlite
+
+# User Guide Builds
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+
+# Tests (if not needed)
+tests/tests/
+tests/results/
+
+# IDEs and Editors
+nbproject/
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Sublime Text Cache
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+
+# Node.js (optional, if using frontend tooling)
+node_modules/
+npm-debug.log
+yarn.lock
+
+# Env (optional, if using .env)
+.env
+.env.*
