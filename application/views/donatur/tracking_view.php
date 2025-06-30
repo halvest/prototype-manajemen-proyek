@@ -16,11 +16,11 @@
         <h4 class="mb-0">Lacak Status Donasi</h4>
     </div>
     <div class="card-body">
-        <p class="text-muted">Masukkan ID Donasi untuk melihat status pengiriman terkini.</p>
-        <?= form_open('lembaga/dashboard/tracking'); ?>
+        <p class="text-muted">Masukkan ID Donasi Anda untuk melihat status pengiriman terkini.</p>
+        <?= form_open('donatur/tracking'); ?>
             <div class="input-group mb-3">
                 <input type="text" name="donation_id" class="form-control" placeholder="Contoh: 1, 2, 3..." required>
-                <button class="btn btn-success" type="submit">Lacak Donasi</button>
+                <button class="btn btn-success" type="submit">Cari Donasi</button>
             </div>
         <?= form_close(); ?>
     </div>
@@ -38,8 +38,8 @@
         <div class="card-body">
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <strong>Dari Donatur:</strong><br>
-                    <?= htmlspecialchars($donation_result->donator_name); ?>
+                    <strong>Untuk Kampanye:</strong><br>
+                    <?= htmlspecialchars($donation_result->campaign_title); ?>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <strong>Status Terkini:</strong><br>
@@ -53,35 +53,40 @@
                     <div class="timeline-icon"><i class="bi bi-journal-text"></i></div>
                     <div class="timeline-content">
                         <h6>Data Donasi Dibuat</h6>
-                        <p>Donatur telah berhasil membuat permintaan donasi.</p>
+                        <p>Anda telah berhasil membuat permintaan donasi.</p>
                         <small class="text-muted"><?= date('d F Y, H:i', strtotime($donation_result->created_at)); ?></small>
                     </div>
                 </li>
+                
+                <?php // --- LOGIKA BARU UNTUK MENAMPILKAN STATUS --- ?>
                 <?php if($donation_result->current_status == 'Dalam Proses' || $donation_result->current_status == 'Received'): ?>
                 <li class="timeline-item active">
-                    <div class="timeline-icon"><i class="bi bi-box-arrow-in-down"></i></div>
+                    <div class="timeline-icon"><i class="bi bi-truck"></i></div>
                     <div class="timeline-content">
                         <h6>Donasi Diproses</h6>
-                        <p>Donasi sedang dalam proses penjemputan atau pengiriman.</p>
+                        <p>Donasi Anda sedang dalam proses penjemputan atau pengiriman.</p>
                     </div>
                 </li>
                 <?php endif; ?>
+                
                 <?php if($donation_result->current_status == 'Received'): ?>
                 <li class="timeline-item active">
                     <div class="timeline-icon"><i class="bi bi-patch-check-fill"></i></div>
                     <div class="timeline-content">
                         <h6>Donasi Diterima</h6>
-                        <p>Donasi telah diterima oleh lembaga Anda.</p>
+                        <p>Donasi telah diterima oleh lembaga tujuan. Terima kasih!</p>
                     </div>
                 </li>
                 <?php endif; ?>
+                 <?php // --- AKHIR LOGIKA BARU --- ?>
+
             </ul>
         </div>
     </div>
 <?php elseif ($this->input->post('donation_id')): ?>
      <div class="card mt-4">
         <div class="card-body text-center p-5">
-            <p class="text-muted mb-0">ID Donasi tidak ditemukan atau tidak terkait dengan kampanye Anda.</p>
+            <p class="text-muted mb-0">ID Donasi tidak ditemukan atau bukan milik Anda.</p>
         </div>
     </div>
 <?php endif; ?>

@@ -51,8 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'home';
 $route['admin/login'] = 'auth/admin_login';
-$route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
+
 $route['admin'] = 'admin/dashboard';
 $route['admin/dashboard'] = 'admin/dashboard/index';
 $route['admin/dashboard/campaigns'] = 'admin/dashboard/campaigns';
@@ -62,4 +61,23 @@ $route['admin/dashboard/reject/(:num)'] = 'admin/dashboard/reject/$1';
 $route['admin/dashboard/delete/(:num)'] = 'admin/dashboard/delete/$1';
 $route['admin/dashboard/edit/(:num)'] = 'admin/dashboard/edit/$1';
 $route['admin/dashboard/verify/(:num)'] = 'admin/dashboard/verify/$1';
+
+$route['donatur/dashboard']   = 'donatur/dashboard/index';
+$route['donatur/riwayat']     = 'donatur/dashboard/riwayat';
+$route['donatur/tracking']    = 'donatur/dashboard/lacak'; // Mengarahkan donatur/tracking ke method lacak
+$route['donatur/notifikasi']  = 'donatur/dashboard/notifikasi';
+$route['donatur/pengaturan']  = 'donatur/dashboard/pengaturan';
+
+$route['lembaga/dashboard']             = 'lembaga/dashboard/index';
+$route['lembaga/dashboard/campaigns']   = 'lembaga/dashboard/campaigns';
+$route['lembaga/donations']             = 'lembaga/donations/index'; // Arahkan ke controller Donasi
+$route['lembaga/dashboard/tracking']    = 'lembaga/dashboard/tracking';
+
+// Rute untuk proses CRUD Kampanye oleh Lembaga
+$route['lembaga/campaign/create']       = 'lembaga/dashboard/create_campaign';
+$route['lembaga/campaign/edit/(:num)']  = 'lembaga/dashboard/edit_campaign/$1';
+$route['lembaga/campaign/delete/(:num)']= 'lembaga/dashboard/delete_campaign/$1';
+
+$route['404_override'] = '';
+$route['translate_uri_dashes'] = FALSE;
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title ?? 'Dashboard Lembaga'; ?> - Relf Connect</title>
+    <title><?= $title ?? 'Dashboard'; ?> - Relf Connect</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -28,32 +28,27 @@
     </a>
     <ul class="nav flex-column px-3">
         <li class="nav-item">
-            <a class="nav-link <?= (isset($active_menu) && $active_menu == 'dashboard') ? 'active' : '' ?>" href="<?= site_url('lembaga/dashboard'); ?>">
+            <a class="nav-link <?= (isset($active_menu) && $active_menu == 'dashboard') ? 'active' : '' ?>" href="<?= site_url('donatur/dashboard'); ?>">
                 <i class="bi bi-grid-fill me-2"></i> Dashboard
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?= (isset($active_menu) && $active_menu == 'kelola_posting') ? 'active' : '' ?>" href="<?= site_url('lembaga/dashboard/campaigns'); ?>">
-                <i class="bi bi-card-list me-2"></i> Kelola Postingan
+            <a class="nav-link <?= (isset($active_menu) && $active_menu == 'riwayat') ? 'active' : '' ?>" href="<?= site_url('donatur/riwayat'); ?>">
+                <i class="bi bi-clock-history me-2"></i> Riwayat Donasi
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?= (isset($active_menu) && $active_menu == 'kelola_donasi') ? 'active' : '' ?>" href="<?= site_url('lembaga/donations'); ?>">
-                <i class="bi bi-inbox-fill me-2"></i> Kelola Donasi
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link <?= (isset($active_menu) && $active_menu == 'lacak') ? 'active' : '' ?>" href="<?= site_url('lembaga/dashboard/tracking'); ?>">
+            <a class="nav-link <?= (isset($active_menu) && $active_menu == 'lacak') ? 'active' : '' ?>" href="<?= site_url('donatur/tracking'); ?>">
                 <i class="bi bi-box-seam-fill me-2"></i> Lacak Barang
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link <?= (isset($active_menu) && $active_menu == 'notifikasi') ? 'active' : '' ?>" href="<?= site_url('lembaga/dashboard/notifikasi'); ?>">
+         <li class="nav-item">
+            <a class="nav-link <?= (isset($active_menu) && $active_menu == 'notifikasi') ? 'active' : '' ?>" href="<?= site_url('donatur/notifikasi'); ?>">
                 <i class="bi bi-bell-fill me-2"></i> Notifikasi
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link <?= (isset($active_menu) && $active_menu == 'pengaturan') ? 'active' : '' ?>" href="<?= site_url('lembaga/dashboard/pengaturan'); ?>">
+         <li class="nav-item">
+            <a class="nav-link <?= (isset($active_menu) && $active_menu == 'pengaturan') ? 'active' : '' ?>" href="<?= site_url('donatur/pengaturan'); ?>">
                 <i class="bi bi-gear-fill me-2"></i> Pengaturan
             </a>
         </li>

@@ -6,45 +6,34 @@ class Dashboard extends CI_Controller {
     public function __construct() {
         parent::__construct();
 
-        // Hanya admin yang boleh mengakses controller ini
         if ($this->session->userdata('role') !== 'admin') {
             $this->session->set_flashdata('error', 'Anda tidak memiliki hak akses.');
             redirect('auth/login');
         }
 
-        // Load semua model
         $this->load->model(['User_model', 'Campaign_model']);
     }
 
-    // ===========================
-    // HALAMAN DASHBOARD UTAMA
-    // ===========================
     public function index() {
         $data = [
             'title' => 'Admin Dashboard',
             'active_menu' => 'dashboard',
         ];
 
-        // Statistik
         $view_data['total_users']       = $this->User_model->count_all_users();
         $view_data['total_campaigns']   = $this->Campaign_model->count_all_campaigns();
         $view_data['pending_campaigns'] = $this->Campaign_model->count_all_campaigns('pending');
 
-        // Daftar kampanye pending
         $all_campaigns = $this->Campaign_model->get_all_campaigns();
         $view_data['pending_campaign_list'] = array_filter($all_campaigns, function($c) {
             return isset($c->status) && $c->status === 'pending';
         });
 
-        // Kirim ke template
         $data['view_file'] = 'dashboard_view';
         $data['view_data'] = $view_data;
         $this->load->view('templates/admin_layout', $data);
     }
 
-    // ===========================
-    // MANAJEMEN KAMPANYE
-    // ===========================
     public function campaigns() {
         $data = [
             'title' => 'Kelola Kampanye',
@@ -113,9 +102,6 @@ class Dashboard extends CI_Controller {
         $this->load->view('admin/campaign_edit_view', $data);
     }
 
-    // ===========================
-    // MANAJEMEN PENGGUNA
-    // ===========================
     public function users() {
         $data = [
             'title' => 'Manajemen Pengguna',

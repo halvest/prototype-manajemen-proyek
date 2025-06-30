@@ -13,7 +13,7 @@ class Tracking extends CI_Controller {
     public function index() {
         $data['title'] = 'Lacak Pengiriman Barang';
         $data['active_menu'] = 'lacak';
-        $data['view_file'] = 'lembaga/tracking_view'; // View untuk Lacak Barang
+        $data['view_file'] = 'lembaga/tracking_view'; 
         $this->load->view('templates/lembaga_layout', $data);
     }
 }

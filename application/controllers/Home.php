@@ -6,18 +6,17 @@ class Home extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Campaign_model');
-        $data['campaigns'] = $this->Campaign_model->get_active_campaigns(9); // Ambil 9 untuk contoh
-        $data['active_page'] = 'campaign'; // Menandai menu 'Campaign' sebagai aktif
+        $this->load->helper(['url', 'text']);
     }
 
     public function index() {
-        $data['active_campaigns'] = $this->Campaign_model->get_active_campaigns();
+        $data['title'] = 'Beranda | RelfConnect';
         $data['active_page'] = 'home';
-        $this->load->view('templates/header');
+
+        $data['campaigns'] = $this->Campaign_model->get_active_campaigns_with_author(9); 
+
+        $this->load->view('templates/header', $data);
         $this->load->view('public/home_view', $data);
-        $this->load->view('public/about_view');
-        $this->load->view('public/campaign_view', $data); 
-        $this->load->view('public/testimoni_view');
         $this->load->view('templates/footer');
     }
 }

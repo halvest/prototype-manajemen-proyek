@@ -14,7 +14,6 @@
                 <?php if (!empty($campaigns)): ?>
                     <?php foreach ($campaigns as $c): ?>
                         <tr>
-                            <!-- Thumbnail -->
                             <td style="width: 100px;">
                                 <?php if (!empty($c->image)): ?>
                                     <img src="<?= base_url('uploads/campaigns/' . $c->image); ?>" alt="Thumbnail" class="img-thumbnail" style="max-width: 80px;">
@@ -23,7 +22,6 @@
                                 <?php endif; ?>
                             </td>
 
-                            <!-- Judul & Deskripsi -->
                             <td>
                                 <strong><?= htmlspecialchars($c->title); ?></strong><br>
                                 <span class="text-muted" style="font-size: 0.9rem;">
@@ -31,10 +29,8 @@
                                 </span>
                             </td>
 
-                            <!-- Nama Lembaga -->
                             <td><?= htmlspecialchars($c->lembaga_name); ?></td>
 
-                            <!-- Status -->
                             <td>
                                 <?php
                                     switch ($c->status) {
@@ -47,7 +43,6 @@
                                 <span class="badge text-bg-<?= $status_class; ?>"><?= ucfirst($c->status); ?></span>
                             </td>
 
-                            <!-- Aksi -->
                             <td class="text-end">
                                 <?php if ($c->status === 'pending'): ?>
                                     <a href="<?= site_url('admin/dashboard/approve/' . $c->campaign_id); ?>" class="btn btn-sm btn-success">Setujui</a>

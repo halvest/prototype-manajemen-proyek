@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Auth extends CI_Controller {
 
     public function __construct() {
@@ -10,15 +9,12 @@ class Auth extends CI_Controller {
         $this->load->helper('url');
     }
 
-    /**
-     * Login umum (Donatur & Lembaga)
-     */
     public function login() {
         if ($this->session->userdata('user_id')) {
             $role = strtolower($this->session->userdata('role'));
 
             if ($role === 'donatur') {
-                redirect('home');
+                redirect('donatur/dashboard');
             } elseif ($role === 'lembaga') {
                 redirect('lembaga/dashboard');
             } else {
@@ -55,7 +51,7 @@ class Auth extends CI_Controller {
                     'logged_in' => TRUE
                 ]);
 
-                redirect($user->role === 'donatur' ? 'home' : 'lembaga/dashboard');
+                redirect($user->role === 'donatur' ? 'donatur/dashboard' : 'lembaga/dashboard');
             } else {
                 $this->session->set_flashdata('error', 'Email atau Password salah.');
                 redirect('auth/login');
@@ -63,9 +59,6 @@ class Auth extends CI_Controller {
         }
     }
 
-    /**
-     * Login khusus admin
-     */
     public function admin_login() {
         if ($this->session->userdata('user_id') && strtolower($this->session->userdata('role')) === 'admin') {
             redirect('admin/dashboard');
@@ -97,16 +90,10 @@ class Auth extends CI_Controller {
         }
     }
 
-    /**
-     * Tampilkan form register gabungan donatur & lembaga
-     */
     public function register_view() {
         $this->load->view('auth/register_view');
     }
 
-    /**
-     * Registrasi gabungan (donatur dan lembaga)
-     */
     public function register() {
         $this->form_validation->set_rules('role', 'Peran', 'required|in_list[donatur,lembaga]');
         $this->form_validation->set_rules('name', 'Nama', 'required');
@@ -139,9 +126,6 @@ class Auth extends CI_Controller {
         }
     }
 
-    /**
-     * Logout semua user
-     */
     public function logout() {
         $this->session->sess_destroy();
         redirect('home');

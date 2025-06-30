@@ -4,7 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class User_model extends CI_Model {
 
     public function register_user($data) {
-        // Hash password menggunakan MD5 sebelum disimpan
         $data['password'] = md5($data['password']);
         return $this->db->insert('users', $data);
     }
@@ -13,9 +12,7 @@ class User_model extends CI_Model {
         $this->db->where('email', $email);
         $user = $this->db->get('users')->row();
 
-        // Bandingkan password hash MD5
         if ($user && $user->password === md5($password)) {
-            // Jika lembaga belum terverifikasi
             if ($user->role == 'lembaga' && $user->verification_status != 'verified') {
                 return 'not_verified';
             }
@@ -28,6 +25,10 @@ class User_model extends CI_Model {
     public function get_user_by_email($email) {
         return $this->db->get_where('users', ['email' => $email])->row();
     }
+    
+    public function get_user_by_id($user_id) {
+        return $this->db->get_where('users', ['user_id' => $user_id])->row();
+    }
 
     public function get_all_users() {
         $this->db->order_by('created_at', 'DESC');
@@ -35,11 +36,10 @@ class User_model extends CI_Model {
     }
 
     public function get_all_lembaga_users() {
-    $this->db->where('role', 'lembaga');
-    $this->db->order_by('created_at', 'DESC');
-    return $this->db->get('users')->result();
-}
-
+        $this->db->where('role', 'lembaga');
+        $this->db->order_by('created_at', 'DESC');
+        return $this->db->get('users')->result();
+    }
 
     public function count_all_users() {
         return $this->db->count_all('users');
