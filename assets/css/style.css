@@ -1,7 +1,167 @@
+/* ===================================================================
+   1. Global Settings & Variables
+   - Mendefinisikan palet warna dan variabel global untuk konsistensi.
+=================================================================== */
+:root {
+    --teal-color: #1abc9c;
+    --teal-dark: #16a085;
+    --light-gray-bg: #f8f9fa;
+    --dark-text: #343a40;
+    --muted-text: #6c757d;
+    --white-bg: #ffffff;
+    --border-color: #dee2e6;
+    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.07);
+    --shadow-lift: 0 8px 25px rgba(0, 0, 0, 0.1);
+    --border-radius-md: 0.75rem;
+    --border-radius-lg: 1rem;
+}
 
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--white-bg);
+    color: var(--dark-text);
+}
+
+/* ===================================================================
+   2. Navbar / Header
+   - Gaya untuk navigasi utama yang modern dan tetap.
+=================================================================== */
+.navbar-brand {
+    color: var(--teal-color) !important;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    color: var(--muted-text);
+    margin: 0 1rem;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--teal-color);
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--dark-text) !important;
+}
+
+.navbar-nav .nav-link:hover:after,
+.navbar-nav .nav-link.active:after {
+    width: 50%;
+}
+
+/* ===================================================================
+   3. Buttons & General Elements
+   - Gaya konsisten untuk tombol di seluruh situs.
+=================================================================== */
+.custom-btn {
+    background-color: var(--teal-color);
+    border-color: var(--teal-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(29, 210, 182, 0.2);
+}
+
+.custom-btn:hover {
+    background-color: var(--teal-dark);
+    border-color: var(--teal-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(29, 210, 182, 0.4);
+}
+
+/* ===================================================================
+   4. Sections (Hero, About, Campaign, Testimoni)
+=================================================================== */
+.hero-section {
+    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+    padding: 4rem 0;
+}
+
+.phone-img {
+    max-width: 80%;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+.section-title-bar {
+    background: var(--teal-color);
+    padding: 1.5rem 0;
+    text-align: center;
+    color: white;
+}
+.section-title-bar h2 {
+    font-weight: 700;
+    margin: 0;
+}
+
+.about-section, .testimonial-section, .campaign-section {
+    padding: 5rem 0;
+}
+.about-section { background-color: var(--white-bg); }
+.campaign-section { background-color: var(--light-gray-bg); }
+.testimonial-section { background-color: var(--white-bg); }
+
+/* Campaign Card */
+.campaign-card {
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    background: white;
+    box-shadow: var(--box-shadow-soft);
+}
+.campaign-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--box-shadow-lift);
+}
+
+/* Testimoni Carousel */
+.testimonial-box {
+    max-width: 720px;
+    margin: auto;
+    padding: 2.5rem;
+    background-color: var(--teal-color);
+    color: white;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 30px rgba(29, 210, 182, 0.3);
+}
+.quote-icon {
+    font-size: 4rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1;
+}
+.testimonial-author {
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+}
+
+/* ===================================================================
+   5. Footer
+=================================================================== */
 .site-footer {
-    background-color: #212529;
-    color: #adb5bd;
+    background-color: var(--dark-text);
+    color: var(--muted-text);
     padding: 4rem 0 2rem 0;
 }
 .site-footer h5 {
@@ -9,7 +169,7 @@
     font-weight: 600;
 }
 .site-footer a {
-    color: #adb5bd;
+    color: var(--muted-text);
     text-decoration: none;
     transition: color 0.2s;
 }
@@ -17,6 +177,6 @@
     color: white;
 }
 .footer-bottom {
-    border-top: 1px solid #343a40;
+    border-top: 1px solid #495057;
     padding-top: 1.5rem;
 }

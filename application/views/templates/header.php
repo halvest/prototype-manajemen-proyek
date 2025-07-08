@@ -22,7 +22,7 @@
 
     body {
         font-family: 'Poppins', sans-serif;
-        padding-top: 0px;
+        padding-top: 5px;
         background-color: #fff;
     }
 

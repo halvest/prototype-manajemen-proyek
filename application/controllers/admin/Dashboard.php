@@ -116,7 +116,7 @@ class Dashboard extends CI_Controller {
         $this->load->view('templates/admin_layout', $data);
     }
 
-    public function verify($user_id) {
+    public function verify_user($user_id) {
         $this->User_model->update_user_verification($user_id, 'verified');
         $this->session->set_flashdata('success', 'Akun lembaga berhasil diverifikasi.');
         redirect('admin/dashboard/users');
