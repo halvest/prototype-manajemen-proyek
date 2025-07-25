@@ -96,8 +96,9 @@ RelfConnect adalah sebuah platform donasi yang menghubungkan **Donatur**, **Lemb
 
 ## 🔗 Link Proyek
 
-- 💻 Source Code GitHub: [**([REPOSITORY](https://github.com/halvest/prototype-manajemen-proyek))**](#)
-- 🌐 Demo: [http://localhost/manajemen-proyek/](http://localhost/manajemen-proyek/) 
+- 💻 Source Code GitHub: [**([REPOSITORY](https://github.com/halvest/prototype-manajemen-proyek))**](#main)
+- 🌐 Demo: [Localhost](http://localhost/manajemen-proyek/)
+- 🌐 Demo: [Youtube](https://youtu.be/NPL0xQLCdG0)
 
 ---
 
